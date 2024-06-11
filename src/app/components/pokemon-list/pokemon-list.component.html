@@ -1,0 +1,12 @@
+@if(pokemons.length > 0) {
+        <div class="pokemon-list">
+                @for (pokemon of pokemons; track pokemon.pokedexId) {
+                <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+                }
+        </div>
+      } 
+      @else {
+        <div class="loading">
+        <img class="rotating" src="/pokedex/assets/background.png"/>
+        </div>
+      }

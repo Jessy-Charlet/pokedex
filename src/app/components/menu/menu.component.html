@@ -1,0 +1,50 @@
+<div class="nav">
+  <div class="navFirstBloc">
+    <a routerLink="/pokedex" alt="Pokedex conplet"><img src="/pokedex/assets/background.png" /></a>
+    <div class="searchBloc">
+      <div>
+        <input type="text" id="search" name="search" [(ngModel)]="input" (input)="search()"
+          placeholder="Recherche par nom / numéro" />
+        <button id="searchClose" [class]="searchClose" (click)="searchX()">❌</button>
+      </div>
+      <ul id="searchResult">
+        @if (result){
+        @for (pokemon of result; track pokemon.name) {
+        <app-search-result [pokemon]="pokemon"></app-search-result>
+        }
+        }
+      </ul>
+    </div>
+    <div class="menuBurger {{menuBurger}}" (click)="menuOpen()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="navSecondBloc {{menu}}">
+    <div>
+      <h3>Génération</h3>
+      <div class="generations">
+      <a routerLink="/pokedex/generation/1" (click)="menuOpen()"><button>1</button></a>
+      <a routerLink="/pokedex/generation/2" (click)="menuOpen()"><button>2</button></a>
+      <a routerLink="/pokedex/generation/3" (click)="menuOpen()"><button>3</button></a>
+      <a routerLink="/pokedex/generation/4" (click)="menuOpen()"><button>4</button></a>
+      <a routerLink="/pokedex/generation/5" (click)="menuOpen()"><button>5</button></a>
+      <a routerLink="/pokedex/generation/6" (click)="menuOpen()"><button>6</button></a>
+      <a routerLink="/pokedex/generation/7" (click)="menuOpen()"><button>7</button></a>
+      <a routerLink="/pokedex/generation/8" (click)="menuOpen()"><button>8</button></a>
+    </div>
+    </div>
+
+    <div class="type">
+      <h3>Type</h3>
+      <ul class="typeList">
+        @for (type of types; track type.id) {
+        <a routerLink="/pokedex/type/{{type.name}}" (click)="menuOpen()">
+          <img [src]="type.image" />
+        </a>
+        }
+      </ul>
+    </div>
+  </div>
+</div>

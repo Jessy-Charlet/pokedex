@@ -1,0 +1,71 @@
+.pokemon-card {
+    position: relative;
+    box-sizing: border-box;
+    padding: 0.5em 0.5em 0 0.5em;
+    border-radius: 1em;
+    box-shadow: 0 0 0.5em rgb(0, 0, 0, 0.4);
+    aspect-ratio: 1/1;
+    text-align: center;
+    transition: all 200ms;
+
+    p {
+        padding: 0;
+        margin: 0;
+    }
+
+    .sprite {
+        width: auto;
+        padding-top: 1em;
+    }
+
+    .pokedexId {
+        position: absolute;
+        top: 0.5em;
+        left: 0.5em;
+        font-weight: bold;
+    }
+
+    .name {
+        position: relative;
+        top: -0.5em;
+        left: 0;
+        margin: auto;
+        padding: 0;
+        font-size: 0.8em;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .type {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10%;
+        justify-items: right;
+        width: 30%;
+        margin: 3%;
+        padding: 0;
+
+        img {
+            width: 50%;
+            background-color: rgb(0, 0, 0, 0.5);
+            padding: 10%;
+            border-radius: 50%;
+            transition: all 200ms;
+        }
+    }
+}
+
+.pokemon-card:hover {
+    box-shadow: 0 0 3em rgb(255, 255, 255, 0.7), inset 0 0 3em rgb(255, 255, 255, 0.7);
+    color: white;
+
+    .type {
+        img {
+            background-color: rgb(255, 255, 255, 0.8);
+        }
+    }
+}

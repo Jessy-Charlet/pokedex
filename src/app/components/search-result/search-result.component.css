@@ -1,0 +1,22 @@
+.searchList{
+    list-style: none;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 200ms;
+    font-weight: 600;
+    margin:0;
+    padding: 0.1em 0.5em;
+    line-height: 50px;
+
+    img{
+        height: 50px;
+        margin: 0 1em;
+        float: left;
+    }
+    .listId{
+        font-size: 0.7em;
+    }
+}
+.searchList:hover{
+    background-color: rgb(0,0,0,0.1);
+}

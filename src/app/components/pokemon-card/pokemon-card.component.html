@@ -1,0 +1,25 @@
+<a routerLink="/pokemon-details/{{pokemon.id}}">
+    @if (colorType(pokemon).length == 2){
+        <div class="pokemon-card"style="background: linear-gradient(45deg,{{colorType(pokemon)[0]}} 50%,{{colorType(pokemon)[1]}} 50%)">
+            <p class="pokedexId">#{{pokemon.pokedexId}}</p>
+            <img class="sprite" [src]="pokemon.sprite" [alt]="pokemon.name" />
+            <p class="name">{{pokemon.name}}</p>
+            <div class="type">
+                @for(type of pokemon.apiTypes; track type.name){
+                    <img [src]="type.image" [alt]="type.name">
+                }
+            </div>
+        </div>
+    } @else {
+            <div class="pokemon-card"style="background-color:{{colorType(pokemon)[0]}}">
+                <p class="pokedexId">#{{pokemon.pokedexId}}</p>
+                <img class="sprite" [src]="pokemon.sprite" [alt]="pokemon.name" />
+                <p class="name">{{pokemon.name}}</p>
+                <div class="type">
+                    @for(type of pokemon.apiTypes; track type.name){
+                        <img [src]="type.image" [alt]="type.name">
+                    }
+                </div>
+            </div>
+    }
+</a>
