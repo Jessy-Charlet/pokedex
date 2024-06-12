@@ -1,98 +1,115 @@
+@if(pokemon){
 <div class="container">
     <div>
-        @if(pokemon){
-            <p class="number">#{{pokemon.pokedexId}}</p>
-            <h3>{{pokemon.name}}</h3>
-            <p class="generation">Génération : {{pokemon.apiGeneration}}</p>
-            <div class="types">
-                @for(type of pokemon.apiTypes; track type.name){
-                    <img [src]="type.image" [alt]="type.name">
-                }
-            </div>
-            <div class="portraitEtStats">
-                @if (colorType(pokemon).length == 2){
-                    <div class="pokemonPortrait" style="background: linear-gradient(45deg,{{colorType(pokemon)[0]}} 50%,{{colorType(pokemon)[1]}} 50%)">
-                        <div>
-                            <img [src]="pokemon.image" />
-                        </div>
-                    </div>
-                } @else {
-                    <div class="pokemonPortrait" style="background-color: {{colorType(pokemon)[0]}}">
-                        <div>
-                            <img [src]="pokemon.image" />
-                        </div>
-                    </div>
-                }
+        <p class="number">#{{pokemon.pokedexId}}</p>
+        <h3>{{pokemon.name}}</h3>
+        <p class="generation">Génération : {{pokemon.apiGeneration}}</p>
+        <div class="types">
+            @for(type of pokemon.apiTypes; track type.name){
+            <img [src]="type.image" [alt]="type.name">
+            }
+        </div>
+        <div class="portraitEtStats">
+            @if (colorType(pokemon).length == 2){
+            <div class="pokemonPortrait"
+                style="background: linear-gradient(45deg,{{colorType(pokemon)[0]}} 50%,{{colorType(pokemon)[1]}} 50%)">
                 <div>
-                    <h4>Statistiques</h4>
-                    <div class="statsContainer">
-                        <p>HP</p>
-                        <div class="statsBloc">
-                            <div style="width : {{statsRange(pokemon.stats.HP)[0]}}%; background-color : {{statsRange(pokemon.stats.HP)[1]}}">
-                                {{pokemon.stats.HP}}
-                            </div>
+                    <img [src]="pokemon.image" />
+                </div>
+            </div>
+            } @else {
+            <div class="pokemonPortrait" style="background-color: {{colorType(pokemon)[0]}}">
+                <div>
+                    <img [src]="pokemon.image" />
+                </div>
+            </div>
+            }
+            <div>
+                <h4>Statistiques</h4>
+                <div class="statsContainer">
+                    <p>HP</p>
+                    <div class="statsBloc">
+                        <div
+                            style="width : {{statsRange(pokemon.stats.HP)[0]}}%; background-color : {{statsRange(pokemon.stats.HP)[1]}}">
+                            {{pokemon.stats.HP}}
                         </div>
-                        <p>Attack</p>
-                        <div class="statsBloc">
-                            <div style="width : {{statsRange(pokemon.stats.attack)[0]}}%; background-color : {{statsRange(pokemon.stats.attack)[1]}}">
-                                {{pokemon.stats.attack}}
-                            </div>
+                    </div>
+                    <p>Attack</p>
+                    <div class="statsBloc">
+                        <div
+                            style="width : {{statsRange(pokemon.stats.attack)[0]}}%; background-color : {{statsRange(pokemon.stats.attack)[1]}}">
+                            {{pokemon.stats.attack}}
                         </div>
-                        <p>Défense</p>
-                        <div class="statsBloc">
-                            <div style="width : {{statsRange(pokemon.stats.defense)[0]}}%; background-color : {{statsRange(pokemon.stats.defense)[1]}}">
-                                {{pokemon.stats.defense}}
-                            </div>
+                    </div>
+                    <p>Défense</p>
+                    <div class="statsBloc">
+                        <div
+                            style="width : {{statsRange(pokemon.stats.defense)[0]}}%; background-color : {{statsRange(pokemon.stats.defense)[1]}}">
+                            {{pokemon.stats.defense}}
                         </div>
-                        <p>Attaque Spéciale</p>
-                        <div class="statsBloc">
-                            <div style="width : {{statsRange(pokemon.stats.special_attack)[0]}}%; background-color : {{statsRange(pokemon.stats.special_attack)[1]}}">
-                                {{pokemon.stats.special_attack}}
-                            </div>
+                    </div>
+                    <p>Attaque Spéciale</p>
+                    <div class="statsBloc">
+                        <div
+                            style="width : {{statsRange(pokemon.stats.special_attack)[0]}}%; background-color : {{statsRange(pokemon.stats.special_attack)[1]}}">
+                            {{pokemon.stats.special_attack}}
                         </div>
-                        <p>Défense Spéciale</p>
-                        <div class="statsBloc">
-                            <div style="width : {{statsRange(pokemon.stats.special_defense)[0]}}%; background-color : {{statsRange(pokemon.stats.special_defense)[1]}}">
-                                {{pokemon.stats.special_defense}}
-                            </div>
+                    </div>
+                    <p>Défense Spéciale</p>
+                    <div class="statsBloc">
+                        <div
+                            style="width : {{statsRange(pokemon.stats.special_defense)[0]}}%; background-color : {{statsRange(pokemon.stats.special_defense)[1]}}">
+                            {{pokemon.stats.special_defense}}
                         </div>
-                        <p>Vitesse</p>
-                        <div class="statsBloc">
-                            <div style="width : {{statsRange(pokemon.stats.speed)[0]}}%; background-color : {{statsRange(pokemon.stats.speed)[1]}}">
-                                {{pokemon.stats.speed}}
-                            </div>
+                    </div>
+                    <p>Vitesse</p>
+                    <div class="statsBloc">
+                        <div
+                            style="width : {{statsRange(pokemon.stats.speed)[0]}}%; background-color : {{statsRange(pokemon.stats.speed)[1]}}">
+                            {{pokemon.stats.speed}}
                         </div>
                     </div>
                 </div>
             </div>
-            <h4>Préévolution / Evolutions</h4>
-            <div class="ligneEvolutive">
-                @if(pokemon.apiPreEvolution.pokedexIdd != null){
-                    <a class="evolutionBloc" routerLink="/pokemon-details/{{pokemon.apiPreEvolution.pokedexIdd}}">
-                        <img [src]="pokemon.preEvolution?.sprite" />
-                        <p>{{pokemon.apiPreEvolution.name}}</p>
-                    </a>
-                    <span class="arrowLeft">◀</span>
-                }
-                <div class="evolutionBloc white">
-                    <img [src]="pokemon.sprite" />
-                </div>
-                @if(pokemon.apiEvolutions[0] != null){
-                    <span class="arrowRight">▶</span>
-                }
-                    @for(evolution of pokemon.evolutions; track evolution.pokedexId){
-                        <a class="evolutionBloc" routerLink="/pokemon-details/{{evolution.pokedexId}}">
-                            <img [src]="evolution.sprite" />
-                            <p>{{evolution.name}}</p>
-                        </a>
-                    }
+        </div>
+        <h4>Préévolution / Evolutions</h4>
+        <div class="ligneEvolutive">
+            @if(pokemon.apiPreEvolution.pokedexIdd != null){
+            <a class="evolutionBloc" routerLink="/pokemon-details/{{pokemon.apiPreEvolution.pokedexIdd}}">
+                <img [src]="pokemon.preEvolution?.sprite" />
+                <p>{{pokemon.apiPreEvolution.name}}</p>
+            </a>
+            <span class="arrowLeft">◀</span>
+            }
+            <div class="evolutionBloc white">
+                <img [src]="pokemon.sprite" />
             </div>
-        }@else {
+            @if(pokemon.apiEvolutions[0] != null){
+            <span class="arrowRight">▶</span>
+            }
+            @for(evolution of pokemon.evolutions; track evolution.pokedexId){
+            <a class="evolutionBloc" routerLink="/pokemon-details/{{evolution.pokedexId}}">
+                <img [src]="evolution.sprite" />
+                <p>{{evolution.name}}</p>
+            </a>
+            }
+        </div>
+    </div>
+</div>
+}@else {
+@if(time == 1 ){
+<div class="container">
+    <div>
         <p>#???</p>
         <h3>MissingNo</h3>
         <div class="pokemonPortrait">
             <img class="missingNo" src="/pokedex/assets/missingno.png" alt="Pokémon inconnu" />
         </div>
-        }
     </div>
 </div>
+} @else {
+<div class="loading">
+    <img class="rotating" src="/pokedex/assets/background.png" />
+</div>
+}
+}

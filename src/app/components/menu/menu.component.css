@@ -72,11 +72,11 @@
         width: 100%;
         display: grid;
         grid-template-columns: repeat(8, 1fr);
-        gap: 0.5em;
+        gap: 0.3em;
 
         button {
             border-radius: 50%;
-            padding: 0.7em;
+            padding: 0.5em;
             height: 100%;
             aspect-ratio: 1/1;
             border: none;
