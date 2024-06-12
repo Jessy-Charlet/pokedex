@@ -34,7 +34,7 @@ export class MenuComponent {
     if (window.matchMedia("(orientation: portrait)").matches) {
       this.menu = "hide";
     }
-    
+
   }
 
 
@@ -60,14 +60,14 @@ export class MenuComponent {
   }
 
   public menuOpen() {
-    if (this.menu == "hide") {
-      this.menu = "show";
-      this.menuBurger = "menuBurgerOpen";
-    } else {
-      this.menu = "hide";
-      this.menuBurger = ""
+    if (window.matchMedia("(orientation: portrait)").matches) {
+      if (this.menu == "hide") {
+        this.menu = "show";
+        this.menuBurger = "menuBurgerOpen";
+      } else {
+        this.menu = "hide";
+        this.menuBurger = ""
+      }
     }
   }
-
-
 }

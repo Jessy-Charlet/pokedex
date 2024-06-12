@@ -10,7 +10,7 @@
       <ul id="searchResult">
         @if (result){
         @for (pokemon of result; track pokemon.name) {
-        <app-search-result [pokemon]="pokemon"></app-search-result>
+        <app-search-result [pokemon]="pokemon" (click)="searchX()"></app-search-result>
         }
         }
       </ul>

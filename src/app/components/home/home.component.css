@@ -21,7 +21,7 @@ justify-items: center;
 
 @media (orientation : portrait) {
     .home{
-        width: 95vw;
+        width: 90vw;
         height: 80vh;
         
         .logo{

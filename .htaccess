@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^(/pokedex)(.*) pokedex/index.html
